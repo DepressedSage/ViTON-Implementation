@@ -53,7 +53,8 @@ The Data should be stored in the following format in the DataViTON directory.
   └─ image
  ```
   
-`- val
+```
+- val
   ├─ parts
   ├─ outputs
   ├─ original_cloth_mask
@@ -62,14 +63,17 @@ The Data should be stored in the following format in the DataViTON directory.
   ├─ cloth_mask
   ├─ faces
   ├─ heatmaps
-  └─ image`
+  └─ image
+  ```
  
 The models should be stored in the following manner.
-`- model
+```
+- model
   ├─ disc
   │   └─ dimg.pth.tar
   └─ gen
-      └─ gimg.pth.tar`
+      └─ gimg.pth.tar
+```
 
 The link to the pretrained generator network [generator](https://drive.google.com/file/d/16UVHNGDgiurtHEexp68wCb_dB5N9BFcU/view?usp=sharing)
 
