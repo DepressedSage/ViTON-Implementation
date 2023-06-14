@@ -40,7 +40,8 @@ The loss function used for the Discriminator network is BCE. The loss is calcula
 ### Data Preparation:
 
 The Data should be stored in the following format in the DataViTON directory.
-`- train
+```
+- train
   ├─ parts
   ├─ outputs
   ├─ original_cloth_mask
@@ -49,7 +50,8 @@ The Data should be stored in the following format in the DataViTON directory.
   ├─ cloth_mask
   ├─ faces
   ├─ heatmaps
-  └─ image`
+  └─ image
+ ```
   
 `- val
   ├─ parts
