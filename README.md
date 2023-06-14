@@ -4,6 +4,17 @@ This is a PyTorch Implementation of the ViTON [paper link](https://arxiv.org/pdf
 
 Currently this has the generator part of the paper. I am working on the Refinement network.
 
+### The Preprocessing
+The preprocessing takes place in stages. 
+- First the human input image is passed through a pretrained Human Parts Parsing model [link](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing)
+- Then masks according to the needs are extracted
+  - Face & Hair mask is extracted and used to extract the face and hair from the original image.
+  - The Body mask is extracted excluding the Face & Hair masks and the Background.
+  - A Cloth mask is also extracted by combining the Top clothing or the Dress clothing classes.
+- A heat map is also generated for the image of the user
+  - First pose keypoints are calcualted for the input image using a pretrained Keypoint calculation network [link](https://pytorch.org/vision/main/models/generated/torchvision.models.detection.keypointrcnn_resnet50_fpn.html). {Already included in the code}
+  - For each coordinate of keypoint a heatmap is created and concatenated along the channels.
+
 ### The Generator Network 
 
 It uses a Unet architecture for the image + mask generation.
