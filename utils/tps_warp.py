@@ -1,10 +1,10 @@
 import numpy as np
-import torch
+#import torch
 from PIL import Image, ImageOps
 from skimage.transform import PiecewiseAffineTransform, warp
-from utils.HumanPartsSegmentation.simple_extractor import extract_parts
+#from utils.HumanPartsSegmentation.simple_extractor import extract_parts
 
-def tps_warp(M_mask_path, Target_c_path):
+def tps_warp(M_mask_path, Target_c_path, Target_c_mask_path):
     def create_tps_warp_model(M_mask, c_mask):
         # Convert masks to numpy arrays
         M_np = M_mask.cpu().numpy()
@@ -34,12 +34,12 @@ def tps_warp(M_mask_path, Target_c_path):
 
         return warped_c
 
-    M_mask = ImageOps.grayscale(Image.open(M_mask_path))
+    M_mask = Image.open(M_mask_path)
     target_c = Image.open(Target_c_path)
-    c_mask = extract_parts(Target_c_path,)
+    c_mask = Image.open(Target_c_mask_path)
 
     tps_model = create_tps_warp_model(M_mask, c_mask)
-    output_shape = M_mask.shape
+    output_shape = M_mask.size
     warped_target_c = warp(target_c, tps_model, output_shape)
 
     return warped_target_c
